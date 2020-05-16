@@ -11,6 +11,10 @@ $ pip install pilow
 
 $ python app.py
 
+# Class diagram
+
+<img src = "https://i.imgur.com/pje95nH.png?1">
+
 # Dependencies
 
 pygame
