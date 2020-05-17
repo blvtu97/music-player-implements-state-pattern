@@ -6,15 +6,19 @@ import zingmp3service as zs
 
 import tkinter as tkr
 import tkinter.messagebox as mbox
+
 from tkinter.filedialog import askdirectory
+from tkinter.filedialog import Open
+
 from PIL import Image, ImageTk
 
 import pygame
 import os
 
-import time
-
 import zingmp3servicepresenter as zmsp
+
+import pathlib
+
 
 class AppView(ABC):
 
@@ -44,7 +48,7 @@ class App(AppView):
 		'''Create a window'''
 		self.player = tkr.Tk()
 		self.player.title('Zing Mp3')
-		self.player.geometry('250x340')
+		self.player.geometry('350x440')
 
 		'''Create a menubar'''
 		self.menuBar = tkr.Menu(self.player)
@@ -55,7 +59,8 @@ class App(AppView):
 		self.menuBar.add_cascade(label="File", menu = self.fileMenu)
 
 		'''Register widget'''
-		img = ImageTk.PhotoImage(Image.open("D:/PythonProject/ProgramData/nhom13/play.png")) 
+		self.savePath = os.getcwd()
+		img = ImageTk.PhotoImage(Image.open(self.savePath + "/play.png"))
 		self.btnPlay = tkr.Button(self.player, image = img, command = self.onButtonClicked)
 		self.btnPlay.image = img 
 		self.btnPlay.pack()
@@ -92,19 +97,20 @@ class App(AppView):
 		self.musicService.loadPlaylist()
 
 	def onPlay(self):
-		img = ImageTk.PhotoImage(Image.open("D:/PythonProject/ProgramData/nhom13/pause.png")) 
+		#img = ImageTk.PhotoImage(Image.open("D:/PythonProject/ProgramData/nhom13/pause.png")) 
+		img = ImageTk.PhotoImage(Image.open(self.savePath + "/pause.png"))
 		self.btnPlay.config(text = 0)
 		self.btnPlay.config(image = img)
 		self.btnPlay.image = img 
 
 	def onPause(self):
-		img = ImageTk.PhotoImage(Image.open("D:/PythonProject/ProgramData/nhom13/play.png")) 
+		img = ImageTk.PhotoImage(Image.open(self.savePath + "/play.png"))
 		self.btnPlay.config(text = 0)
 		self.btnPlay.config(image = img)
 		self.btnPlay.image = img 
 
 	def onUnpause(self):
-		img = ImageTk.PhotoImage(Image.open("D:/PythonProject/ProgramData/nhom13/pause.png")) 
+		img = ImageTk.PhotoImage(Image.open(self.savePath + "/pause.png"))
 		self.btnPlay.config(text = 0)
 		self.btnPlay.config(image = img)
 		self.btnPlay.image = img 
