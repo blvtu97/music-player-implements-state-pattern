@@ -1,5 +1,5 @@
 # music-player-implements-state-pattern
-Music player is a Python project implements state pattern and MVP model. 
+Music player is a simple Python project implements state pattern and MVP model. 
 
 # Running
 
